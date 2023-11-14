@@ -1792,6 +1792,7 @@ class ProgramState(Identifier):
         self.time_since_start_beat = 0
         self.time_since_start_s = 0
         self.all_track_outputs = []
+        self.command_count = 0
 
     def toggle_play(self):
         if self.playing:
@@ -1875,6 +1876,7 @@ class ProgramState(Identifier):
                     self.playing = True
                 return True
 
+        self.command_count += 1
         if cmd == "new_clip":
             track_id, clip_i = toks[1].split(",")
             clip_i = int(clip_i)
